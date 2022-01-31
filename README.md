@@ -54,14 +54,16 @@ def opcion_window():
 
 def show_choice(r):
     tk.messagebox.showinfo('Selection', 'You selected option '+str(r.get()))
-    #function to create the window that ask for file
-    #direct the file entered to the address for VIENNA it has to vienna option using if, elif, else
-    #example:
-        #if option 1:
-         #path to vienna(C:\Users\kbrig\OneDrive\Escritorio\Vienna\downloads)>RNAfold < path to file entered in window
-    #open the file created by Vienna and 
-            
+   
     
 main()
+
+ #function to create the window that ask for file
+ #direct the file entered to the address for VIENNA it has to vienna option using if, elif, else
+ #example:
+ #if option 1:
+ #path to vienna(C:\Users\kbrig\OneDrive\Escritorio\Vienna\downloads)>RNAfold < path to file entered in window
+ #open the file created by Vienna and 
+            
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
