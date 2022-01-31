@@ -1,4 +1,6 @@
 # Capston
+#Karina can be radiobuttons or check buttons for first windows-------------------------------------------------------------------------------------------------------------
+#This is a test and a draft
 import tkinter as tk
 import tkinter.messagebox
 #creating the first window with options
@@ -51,3 +53,4 @@ class MyGUI:
     
     
 my_gui = MyGUI()
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
