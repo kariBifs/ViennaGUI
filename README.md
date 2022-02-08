@@ -98,7 +98,6 @@ def myFile():
     myLabel.pack()
     os.system('"%s"'% myPath+'/'+myChoice+' < '+rnafile)
 
-    #print(e)
 myButton = Button(root, text = "Enter your file",command=myFile)
 myButton.pack()
 root.mainloop()
