@@ -7,8 +7,8 @@ from tkinter import * #import the module tk with all the functions
 import os
 #first gui
 
-HEIGHT=50
-WIDTH=300
+HEIGHT=100
+WIDTH=400
 root= Tk()
 root.title('ViennaRNA Package')# the title for the window
 
@@ -25,15 +25,15 @@ def openVienna():
     myLabel.pack()
    
     
-myButton = Button(root, text = "Open Program",command = openVienna)
-myButton.pack()
+myButton1 = Button(root, text = "Open Program",command = openVienna)
+myButton2 = Button(canvas, text= 'Close Window', padx=10, pady=5,command =root.destroy)
+myButton1.pack()
+myButton2.pack()
 root.mainloop()
 #the code needs validation for the path be correct
 #variables for the size of the gui. Can be changes to the size wwe want
 #############################################################################
 #second gui
-HEIGHT=50
-WIDTH=300
 
 root = Tk()# create the root(window that will hold everything)
 root.title('ViennaRNA Package')# the title for the window
@@ -98,10 +98,12 @@ def myFile():
     myLabel.pack()
     os.system('"%s"'% myPath+'/'+myChoice+' < '+rnafile)
 
-myButton = Button(root, text = "Enter your file",command=myFile)
-myButton.pack()
+myButton5 = Button(root, text = "Enter your file",command=myFile)
+myButton6 = Button(canvas, text= 'Close Window', padx=10, pady=5,command =root.destroy)
+myButton5.pack()
+myButton6.pack()
 root.mainloop()
 
-#to do: put labels in the path GUIs instead of writing the instructions on the Entries, add buttons to close windows, make the keyboard functional so user can also press #enter
+#to do: put labels in the path GUIs instead of writing the instructions on the Entries, make the keyboard functional so user can also press enter
 
 
