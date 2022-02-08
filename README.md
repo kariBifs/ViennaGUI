@@ -1,7 +1,7 @@
 # Capston
 #The order of the windows have changed in order to go better with the flow chat of the presentation and this connect to os. Look for the file with the output. It should be in 
 #the folder where you have the .py and it will be a .ps it should have the name of the file that you used in the file path but extension .ps
-#Note: this code will only work on Windows. In order to make it work for Linux,we will have to add regular expression instead of'\\'(line99) Other ways??
+#Note: should work for Windows and Linux now. Windows remember to put foward slashes in your paths
 #First gui################################################################################################
 from tkinter import * #import the module tk with all the functions
 import os
@@ -96,7 +96,7 @@ def myFile():
     rnafile=e.get()
     myLabel = Label(root, text= "Your path is: "+rnafile)
     myLabel.pack()
-    os.system('"%s"'% myPath+'\\'+myChoice+' < '+rnafile)
+    os.system('"%s"'% myPath+'/'+myChoice+' < '+rnafile)
 
     #print(e)
 myButton = Button(root, text = "Enter your file",command=myFile)
