@@ -14,7 +14,7 @@ root.title('ViennaRNA Package')# the title for the window
 
 canvas = Canvas(root,height=HEIGHT, width=WIDTH).pack()
 l=Label(root,text='Welcome to ViennaRNA!\nEnter your ViennaRna path')
-l.pack()
+l.place(rely=0.1,relx=0.3)
 e=Entry(root, width =50)
 e.pack()
 #e.insert(0,"Enter your ViennaRna path")
@@ -43,7 +43,7 @@ canvas = Canvas(root,height=HEIGHT, width=WIDTH).pack()#we create the canvas whe
 #We may add frames and add widgets in the frames but right now on canvas
 
 topLabel = Label(canvas, text= 'Choose your program!')# a label in canvas welcoming
-topLabel.pack()#this will place label, we then can change to .grid() or .place() to be more specific
+topLabel.place(rely=0.1,relx=0.3)
 
 #creating a list with tuples so if we want later to add more executables will be easier
 opciones=[('RNAfold','RNAfold'),('RNAalifold','RNAalifold'),('RNAplfold','RNAplfold')]
@@ -86,7 +86,7 @@ root.title('ViennaRNA Package')# the title for the window
 
 canvas = Canvas(root,height=HEIGHT, width=WIDTH).pack()
 ll=Label(root,text='Enter the path to your RNA file!')
-ll.pack()
+ll.place(rely=0.1,relx=0.3)
 e=Entry(root, width =50)
 e.pack()
 #e.insert(0,"Enter your file's path")
