@@ -104,6 +104,6 @@ myButton5.pack()
 myButton6.pack()
 root.mainloop()
 
-#to do: put labels in the path GUIs instead of writing the instructions on the Entries, make the keyboard functional so user can also press enter
+#to do: make the keyboard functional so user can also press enter
 
 
