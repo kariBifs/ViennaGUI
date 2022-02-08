@@ -102,4 +102,6 @@ myButton = Button(root, text = "Enter your file",command=myFile)
 myButton.pack()
 root.mainloop()
 
+#to do: put labels in the path GUIs instead of writing the instructions on the Entries, add buttons to close windows, make the keyboard functional so user can also press #enter
+
 
