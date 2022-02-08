@@ -13,10 +13,11 @@ root= Tk()
 root.title('ViennaRNA Package')# the title for the window
 
 canvas = Canvas(root,height=HEIGHT, width=WIDTH).pack()
-
+l=Label(root,text='Welcome to ViennaRNA!\nEnter your ViennaRna path')
+l.pack()
 e=Entry(root, width =50)
 e.pack()
-e.insert(0,"Enter your ViennaRna path")
+#e.insert(0,"Enter your ViennaRna path")
 
 def openVienna():
     global myPath
@@ -41,7 +42,7 @@ root.title('ViennaRNA Package')# the title for the window
 canvas = Canvas(root,height=HEIGHT, width=WIDTH).pack()#we create the canvas where we will put the widgets.
 #We may add frames and add widgets in the frames but right now on canvas
 
-topLabel = Label(canvas, text= 'Welcome to ViennaRna!')# a label in canvas welcoming
+topLabel = Label(canvas, text= 'Choose your program!')# a label in canvas welcoming
 topLabel.pack()#this will place label, we then can change to .grid() or .place() to be more specific
 
 #creating a list with tuples so if we want later to add more executables will be easier
@@ -80,16 +81,15 @@ mainloop()
 ###############################################################################################################
 #third gui
 
-HEIGHT=50
-WIDTH=300
 root= Tk()
 root.title('ViennaRNA Package')# the title for the window
 
 canvas = Canvas(root,height=HEIGHT, width=WIDTH).pack()
-
+ll=Label(root,text='Enter the path to your RNA file!')
+ll.pack()
 e=Entry(root, width =50)
 e.pack()
-e.insert(0,"Enter your file's path")
+#e.insert(0,"Enter your file's path")
 
 def myFile():
     global rnafile
