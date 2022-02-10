@@ -1,8 +1,7 @@
 # Capston
-#The order of the windows have changed in order to go better with the flow chat of the presentation and this connect to os. Look for the file with the output. It should be in 
-#the folder where you have the .py and it will be a .ps it should have the name of the file that you used in the file path but extension .ps
-#Note: should work for Windows and Linux now. Windows remember to put foward slashes in your paths
-#First gui################################################################################################
+should work for Windows and Linux now. 
+#First gui ask for the path to ViennaPackage
+################################################################################################
 from tkinter import * #import the module tk with all the functions
 import os
 #first gui
@@ -27,14 +26,14 @@ def openVienna():
    
     
 myButton1 = Button(root, text = "Open Program",command = openVienna)
-myButton2 = Button(canvas, text= 'Close Window', padx=10, pady=5,command =root.destroy)
+myButton2 = Button(canvas, text= 'Next', padx=10, pady=5,command =root.destroy)
 myButton1.pack()
 myButton2.pack()
 root.mainloop()
 #the code needs validation for the path be correct
 #variables for the size of the gui. Can be changes to the size wwe want
 #############################################################################
-#second gui
+#second gui ask for the executable that user wants to run
 
 root = Tk()# create the root(window that will hold everything)
 root.title('ViennaRNA Package')# the title for the window
@@ -70,8 +69,8 @@ def clicked(value):
     myLabel.pack()
     
 #defining buttons
-myButton1 = Button(canvas, text = "SELECT", padx=10,pady=5, command = lambda:clicked (r.get()))
-myButton2 = Button(canvas, text= 'QUIT', padx=10, pady=5,command =root.destroy)
+myButton1 = Button(canvas, text = "Select", padx=10,pady=5, command = lambda:clicked (r.get()))
+myButton2 = Button(canvas, text= 'Next', padx=10, pady=5,command =root.destroy)
 #placing buttons
 myButton1.pack()
 myButton2.pack()
