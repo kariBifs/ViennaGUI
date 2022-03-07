@@ -11,7 +11,7 @@ from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
 
 
-#Window title and dimensions
+#Main GUI window title and dimensions
 #The GUI uses grid as the geometry manager
 window = Tk()
 window.title ("ViennaRNA Package")
@@ -29,7 +29,9 @@ def display(widget1):
 def remove(widget1):
     widget1.grid_remove()
 
-#This function opens the browse window
+#This function opens the browse window and allows only fasta
+#and text files to be used. When file selected add to the
+#textbox
 def browse():    
     file = askopenfile(mode='rb', title='Choose a file',
     filetypes=(('fasta files','*.fa *.fasta'),
@@ -44,7 +46,9 @@ def browse():
         
 
 #This function dictates what happens when the checkbutton widget
-#is checked and it is an if else statement
+#is checked. When checked, hide large textbox and show the browse
+#box and the browse button. When unchecked, hide browse box and
+#browse button
 def isChecked():
     if cb.get():
         global browse_box
@@ -61,18 +65,17 @@ def isChecked():
         display(txt_seq)
         
 
-#This function will give output after the go button
-#is pressed, depending on input from text box or
-#opening file
+#This function will give output after the go button is pressed, 
+#depending on input from text box or opening file
 def go_event():
     #if txt_seq is showing do the following
     if txt_seq.winfo_ismapped() == True:
       with open ("input.txt", "w") as usr_inp:
          usr_inp.write(txt_seq.get(1.0, "end-1c"))
       output = subprocess.check_output(["RNAfold", "input.txt"])
-      #find the new ps file
+      #find the ps file
       find_file()
-      #display the output      
+      #display the output in terminal  
       print (output)
       #open the ps file on canvas      
       open_file()
@@ -81,17 +84,16 @@ def go_event():
     #else do this instead  
     else:
       output = subprocess.check_output(["RNAfold", filepath])
-      #find the new ps file
+      #find the ps file
       find_file()
-      #display the output      
+      #display the output in terminal     
       print (output)
       #open the ps file on canvas      
       open_file()
       
         
-#This function will find all .ps files
+#This function will find all .ps files within tmp folder
 def find_file():
-    #find all .ps files in tmp folder
     global find_ps
     find_ps = []
     list_dir = os.listdir()
@@ -102,7 +104,7 @@ def find_file():
     #returns a list of all ps files
     return find_ps
 
-#This function will open ps in different window
+#This function will open ps file in a different window
 def open_file():
     ps_window = Toplevel(window)
     #Toplevel window title and dimensions
@@ -127,15 +129,19 @@ def open_file():
     ps_canvas.create_image(0, 0, anchor="nw", image=img)
     ps_canvas.grid()
 
-#Function to quit the program   
+#Function to quit the program and check if user is sure they want to quit
 def quit_prg():
     if messagebox.askokcancel("Quit", 
         "Quitting with delete files\nDo you want to quit?"):
+        #change out of directory
         os.chdir('..')
+        #remove tmp directory
         shutil.rmtree(os.path.join(os.getcwd(),'tmp'))
+        #remove main GUI window
         window.destroy()
 
-#Welcome and enter sequence labels
+#Additional details for main GUI window
+#Welcome and enter sequence labels on main GUI window
 prg_title = Label(window, text="Welcome to RNAfold Program",
        font=("Times New Roman", 14)).grid(
        row=0, columnspan=15, padx=5, pady=5)
@@ -143,7 +149,7 @@ lbl_seq = Label(window, text="Enter RNA sequence or upload file :",
        font=("Times New Roman", 12)).grid(
        row=1, columnspan=15, padx=5, pady=5)
 
-#Text box and go button
+#Text box and go button on main GUI window
 global txt_seq, go_btn, inp_seq, quit_btn
 txt_seq = Text(window, width=40, height=10)
 txt_seq.grid(row=3, column=1, columnspan = 6, padx=5, pady=25)
@@ -153,17 +159,17 @@ go_btn = Button(window, text="Go", command=go_event)
 go_btn.grid(row=3, column=11, padx=5, pady=10)     
 
 
-#Checkbutton on window
+#Checkbutton on main GUI window
 cb_file = Checkbutton(window, text="To upload file, check box", variable=cb, 
   command= isChecked)
 cb_file.grid(row=4, column=1, padx=5, pady=5)  
 
-#Quit button on window
+#Quit button on main GUI window to delete tmp and close program
 quit_btn = Button(window, text="Quit", command=quit_prg)
 quit_btn.grid(row=4, column=11, padx=5, pady=5)
 
-#Delete tmp and close program
+#When closing by clicking X, delete tmp and close program
 window.protocol("WM_DELETE_WINDOW", quit_prg)
 
-#The following is needed to keep window running
+#The following is needed to keep main GUI window running
 window.mainloop()
