@@ -2,8 +2,9 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
-</p>
  ####Vienna GUI for RNAfold
+</p>
+ 
 
 
 The ViennaRNA - RNAfold graphical user interface is a
