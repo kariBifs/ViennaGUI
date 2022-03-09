@@ -1,6 +1,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/kariBifs/capston?color=color)
-
-<img src = "imagesread/viennaout.png" width =100>
+<p align="center">
+ <img src = "imagesread/viennaout.png" width =100>
+</p>
 
 Vienna GUI for RNAfold
 
