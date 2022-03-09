@@ -2,11 +2,11 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
- _ _Vienna GUI for RNAfold_ _
+ Vienna GUI for RNAfold
 </p>
 <!--make title smaller and bold-->
 
---About the Project--
+About the Project
 
 
 The ViennaRNA - RNAfold graphical user interface is a
@@ -15,6 +15,9 @@ user input or from a file and output the PostScript
 files that are generated. This is for local ViennaRNA
 RNAfold program.
 <!--Motivation-->
+<!--Build Status-->
+<!--Screenshots-->
+#Installation
 Before running vienna_guiV4.py script ensure the 
 following have been installed:
 
@@ -33,3 +36,5 @@ The ViennaRNA - RNAfold GUI creates a tmp folder in the
 active directory. After quit or close the tmp folder will be 
 removed. If you need to save any files please do so prior
 to quitting or closing the program.
+<!--how to use?-->
+#Contribute
