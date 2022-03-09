@@ -2,7 +2,7 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
- Vienna GUI for RNAfold
+ **Vienna GUI for RNAfold** [comment]:<#make letters small>
 </p>
  
 
