@@ -6,7 +6,7 @@
 </p>
 <!--make title smaller and bold-->
 
-About the Project
+**About the Project**
 
 
 The ViennaRNA - RNAfold graphical user interface is a
@@ -17,7 +17,7 @@ RNAfold program.
 <!--Motivation-->
 <!--Build Status-->
 <!--Screenshots-->
-#Installation
+**Installation**
 Before running vienna_guiV4.py script ensure the 
 following have been installed:
 
@@ -37,4 +37,4 @@ active directory. After quit or close the tmp folder will be
 removed. If you need to save any files please do so prior
 to quitting or closing the program.
 <!--how to use?-->
-#Contribute
+**Contribute**
