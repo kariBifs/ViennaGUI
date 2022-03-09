@@ -1,5 +1,6 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/kariBifs/capston?color=color)
-Vienna GUI for RNAfold
+
+#Vienna GUI for RNAfold
 
 The ViennaRNA - RNAfold graphical user interface is a
 basic GUI to allow users to add sequences either as 
