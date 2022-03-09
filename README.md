@@ -16,14 +16,18 @@ files that are generated. This is for local ViennaRNA
 RNAfold program.
 <br>
 **Motivation**
+
 To make the use of ViennaRNA package locally install more user-friendly
 <br>
+
 **Build Status**
 At the moment the project has graphical user interface for RNAfold. More programs from the package will be added. Adaptation to Windows and MacOS will be added.
 <br>
+
 **Screenshots**
 TBD later.
 <br>
+
 **Installation**
 <br>
 Before running vienna_guiV4.py script ensure the 
@@ -46,4 +50,5 @@ removed. If you need to save any files please do so prior
 to quitting or closing the program.
 <!--how to use?-->
 <br>
+
 **Contribute**
