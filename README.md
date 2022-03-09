@@ -2,9 +2,11 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
- Vienna GUI for RNAfold
+ _ _Vienna GUI for RNAfold_ _
 </p>
- 
+<!--make title smaller and bold-->
+
+--About the Project--
 
 
 The ViennaRNA - RNAfold graphical user interface is a
@@ -12,7 +14,7 @@ basic GUI to allow users to add sequences either as
 user input or from a file and output the PostScript
 files that are generated. This is for local ViennaRNA
 RNAfold program.
-
+<!--Motivation-->
 Before running vienna_guiV4.py script ensure the 
 following have been installed:
 
