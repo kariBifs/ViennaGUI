@@ -1,8 +1,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/kariBifs/capston?color=color)
 
-<                  img src = "imagesread/viennaout.png" width =100>
-                           
- [comment]:<#Vienna GUI for RNAfold>
+<img src = "imagesread/viennaout.png" width =100>
+Vienna GUI for RNAfold>
                                                         
 The ViennaRNA - RNAfold graphical user interface is a
 basic GUI to allow users to add sequences either as 
