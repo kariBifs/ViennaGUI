@@ -7,8 +7,7 @@
 <!--make title smaller and bold-->
 
 **About the Project**
-
-
+<br>
 The ViennaRNA - RNAfold graphical user interface is a
 basic GUI to allow users to add sequences either as 
 user input or from a file and output the PostScript
@@ -16,11 +15,12 @@ files that are generated. This is for local ViennaRNA
 RNAfold program.
 <br>
 **Motivation**
-
-To make the use of ViennaRNA package locally install more user-friendly
+<br>
+To make locally installed ViennaRNA package user-friendly.
 <br>
 
 **Build Status**
+<br>
 At the moment the project has graphical user interface for RNAfold. More programs from the package will be added. Adaptation to Windows and MacOS will be added.
 <br>
 
