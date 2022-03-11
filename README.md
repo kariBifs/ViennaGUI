@@ -10,7 +10,7 @@ Before running vienna_guiV4.py script ensure the
 following have been installed:
 
 - ViennaRNA package
-- Python 3
+- Python3
 - tkinter
 - Pillow
 - Ghostscript
