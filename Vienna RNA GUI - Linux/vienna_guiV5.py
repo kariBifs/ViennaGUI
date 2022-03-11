@@ -74,6 +74,7 @@ def fold_select():
     if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
        remove(browse_box)
        remove(browse_btn)
+       remove(browse_btn2)
        cb.set(0)
        print("textbox present")
        print("checkbox present")
@@ -81,6 +82,7 @@ def fold_select():
     elif browse_box.winfo_ismapped() == True:
        remove(browse_box)
        remove(browse_btn)
+       remove(browse_btn2)
        display(txt_seq)
        cb.set(0)
        display(cb_file)
@@ -103,13 +105,15 @@ def pl_select():
     if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
        remove(browse_box)
        remove(browse_btn)
+       remove(browse_btn2)
        cb.set(0)
        print("textbox present")
        print("checkbox present")
        
     elif browse_box.winfo_ismapped() == True:
-       browse_box.grid_remove()
+       remove(browse_box)
        remove(browse_btn)
+       remove(browse_btn2)
        display(txt_seq)
        cb.set(0)
        display(cb_file)
@@ -200,12 +204,13 @@ def open_file():
         
     #Open the ps file    
     img_open = Image.open(ps_loc)
-    img_open = img_open.resize((600, 600), Image.ANTIALIAS)
+    img_w, img_h = img_open.size 
+    #img_open = img_open.resize((600, 600), Image.ANTIALIAS)
     global img
     img = ImageTk.PhotoImage(img_open)
     
     #Create a blank canvas
-    ps_canvas = Canvas(ps_window, width= 600, height = 600, bg= "white", 
+    ps_canvas = Canvas(ps_window, width= img_w, height= img_h, bg= "white", 
     highlightthickness=0)
     
     #Paste the ps file onto the canvas
