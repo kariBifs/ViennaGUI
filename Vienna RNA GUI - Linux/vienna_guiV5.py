@@ -84,8 +84,6 @@ def fold_select():
        display(txt_seq)
        cb.set(0)
        display(cb_file)
-          #cb_file.grid(row=6, column=1, columnspan=5, 
-          #             sticky=W, padx=5, pady=5)
              
     else:
        cb.set(0)
@@ -98,13 +96,7 @@ def aln_select():
     remove(cb_file)
     
     display(browse_box)
-    display(browse_btn)
-    #global browse_box, browse_btn
-    #browse_box = Entry(window, width = 40)
-    #browse_box.grid(row=3, column=1, columnspan=6, padx=5, pady=5)
-    
-    #browse_btn = Button(window, text="Browse", command=browse_aln)
-    #browse_btn.grid(row=3, column=7, sticky=W, padx=5, pady=5)
+    display(browse_btn2)
 
 #This function will display widgets for RNAplfold program
 def pl_select():
@@ -152,11 +144,10 @@ def go_event():
           open_file()
           
     elif rbtn.get()==2:
-       output = subprocess.check_output(["RNAalifold", filepath])
+       output = subprocess.run(["RNAalifold", filepath])
        #find the ps file
        find_file()
-       #display the output in terminal     
-       print (output)
+
        #open the ps file on canvas      
        open_file()
        
@@ -165,17 +156,16 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          output = subprocess.run("RNAplfold < input.txt", shell=True)
+          subprocess.run("RNAplfold < input.txt", shell=True)
           #find the ps file
           find_file()
-          #display the output in terminal  
-          #print (output)
+
           #open the ps file on canvas      
           open_file()
             
        #else do this instead
        else:
-          output = subprocess.check_output("RNAplfold < %s" %filepath,
+          subprocess.run("RNAplfold < %s" %filepath,
                         shell=True)
           #find the ps file
           find_file()
@@ -267,7 +257,7 @@ lbl_seq = Label(window, text="Enter RNA sequence: ",
 
 #Text box and go button on main GUI window
 global txt_seq, go_btn, inp_seq, quit_btn
-global cb_file, browse_box, browse_btn
+global cb_file, browse_box, browse_btn, browse_btn2
 
 txt_seq = Text(window, width=40, height=10)
 txt_seq.grid(row=4, column=1, columnspan=5, padx=5, pady=25)
@@ -290,6 +280,10 @@ remove(browse_box)
 browse_btn =  Button(window, text="Browse", command=browse)
 browse_btn.grid(row=3, column=7, sticky=W, padx=5, pady=5)
 remove(browse_btn)
+
+browse_btn2 = Button(window, text="Browse", command=browse_aln)
+browse_btn2.grid(row=3, column=7, sticky=W, padx=5, pady=5)
+remove(browse_btn2)
 
 #Quit button on main GUI window to delete tmp and close program
 quit_btn = Button(window, text="Quit", command=quit_prg)
