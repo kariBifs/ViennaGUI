@@ -6,7 +6,7 @@
   <strong>GUI for ViennaRNA</strong>.</p>
 
 **About the Project**
-_____________
+-------------
 <br>
 The ViennaRNA graphical user interface is a
 basic GUI to allow users to add sequences either as 
