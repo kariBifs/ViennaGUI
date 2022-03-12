@@ -7,7 +7,7 @@
  </p>
  <br>
  <p align="center">
-  [Explore the docs](https://github.com/kariBifs/Capston)
+  [Explore the docs>>](https://github.com/kariBifs/Capston)
  </p>
  <br>
 
