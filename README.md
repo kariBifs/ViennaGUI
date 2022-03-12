@@ -73,6 +73,7 @@ to quitting or closing the program.
 <br>
 If you have suggestions to improve this project or find some issues with it, please fork the repo and create a pull request.
 <br>
+
 **Contact**
 <br>
 Project Link: https://github.com/kariBifs/Capston
