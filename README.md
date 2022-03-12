@@ -7,11 +7,6 @@
  </p>
  <br>
  
-  [Explore the docs>>](https://github.com/kariBifs/Capston)
- 
- <br>
-
-
 ## **About the Project**
 
 GUI for ViennaRNA is a
