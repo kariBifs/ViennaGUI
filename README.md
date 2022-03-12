@@ -4,6 +4,7 @@
  <img src = "imagesread/viennaout.png" width =100>
  <br>
  <strong>GUI for ViennaRNA</strong>
+ <br>
  [Explore the docs](https://github.com/kariBifs/Capston)
 </p>
 
