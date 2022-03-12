@@ -23,8 +23,14 @@ To make locally installed ViennaRNA package user-friendly.
 **Built with**
 <br>
 -Python 3
+
+
 -tkinter
+
+
 -Ghostscript
+
+
 -Pillow
 <br>
 **Build Status**
