@@ -38,7 +38,7 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 **Screenshots**
 <br>
 <p align="center">
- <img width="450" height="300" src = "imagesread/Screenshot 2022-03-12 143326.png/450/300">
+ <img src = "imagesread/Screenshot 2022-03-12 143326.png"width=450 height=300>
 </p>
 <br>
 
