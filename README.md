@@ -2,7 +2,7 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100> 
  <br>
- <strong><font size ="-2">Vienna GUI for RNAfold</strong></font></p>
+ <strong><font size ="-3">GUI for ViennaRNA</strong>.</font>.</p>
 
 
 <!--make title smaller and bold-->
