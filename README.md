@@ -19,7 +19,7 @@ This is for local ViennaRNA.
 
 **Motivation**
 <br>
-To make locally installed ViennaRNA package user-friendly.
+To make locally-installed ViennaRNA package user-friendly.
 <br>
 
 **Built with**
