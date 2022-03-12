@@ -29,10 +29,19 @@ To make locally installed ViennaRNA package user-friendly.
 <br>
 -Pillow
 <br>
+
 **Build Status**
 <br>
 This app only works on Linux. Adaptation to Windows and MacOS will be added. RNAplfold functionality will also be added soon.
 <br>
+
+**Screenshots**
+<br>
+<p align="center">
+ <img width="450" height="300" src = "imagesread/Screenshot 2022-03-12 143326.png/450/300">
+</p>
+<br>
+
 ## **Getting Started**
 
 
