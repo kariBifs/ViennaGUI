@@ -3,10 +3,9 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
- 
-  [GUI for ViennaRNA](https://github.com/kariBifs/Capston)
-  !<--strong>GUI for ViennaRNA</strong-->
-</p>
+ <strong>GUI for ViennaRNA</strong>
+ [Explore the docs](https://github.com/kariBifs/Capston)
+.</p>
 
 ## **About the Project**
 
