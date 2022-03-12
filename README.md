@@ -7,7 +7,7 @@
 
 # **About the Project**
 
-<img src = "imagesread/Screenshot 2022-03-12.png" width =200>
+<img src = "imagesread/Screenshot 2022-03-12 143326.png" width =200>
 GUI for ViennaRNA is a
 basic GUI that allows users to add sequences either as 
 user input or from a file.The user is allowed to select one of the three programs (RNAfold, RNAalifold, RNAplfold).
