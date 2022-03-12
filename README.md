@@ -3,7 +3,8 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100> 
  <br>
- <strong>GUI for ViennaRNA</strong>.</p>
+ [GUI for ViennaRNA package](https://github.com/kariBifs/Capston)
+ .</p>
 
 
 <!--make title smaller and bold-->
