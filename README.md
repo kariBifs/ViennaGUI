@@ -1,5 +1,5 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/kariBifs/capston?color=color)
-(https://img.shields.io/badge/<language>-<Python>-<red>)
+![GitHub language](https://img.shields.io/badge/language-Python-red)
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100> 
  <br>
