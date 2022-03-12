@@ -16,26 +16,21 @@ This is for local ViennaRNA.
 
 
 ## **Motivation**
-
-
+<br>
 To make locally installed ViennaRNA package user-friendly.
-
+<br>
 
 ## **Built with**
-
-
+<br>
 -Python 3
 -tkinter
 -Ghostscript
 -Pillow
-
-
+<br>
 ## **Build Status**
-
-
+<br>
 This app only works on Linux. Adaptation to Windows and MacOS will be added. RNAplfold functionality will also be added soon.
-
-
+<br>
 # **Getting Started**
 
 
