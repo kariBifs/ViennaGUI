@@ -3,7 +3,10 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
-  <strong>GUI for ViennaRNA</strong>.</p>
+ 
+  [GUI for ViennaRNA](https://github.com/kariBifs/Capston)
+  !<--strong>GUI for ViennaRNA</strong-->
+</p>
 
 ## **About the Project**
 
@@ -50,6 +53,7 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 **Requirements**
 <br>
 See [requirement.txt](https://github.com/kariBifs/Capston)
+<br>
 **Installation**
 <br>
 Before running vienna_guiV5.py script ensure the 
