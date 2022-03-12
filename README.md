@@ -6,7 +6,6 @@
   <strong>GUI for ViennaRNA</strong>.</p>
 
 # **About the Project**
--------------
 
 
 GUI for ViennaRNA is a
@@ -38,7 +37,7 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 
 
 # **Getting Started**
--------------
+
 
 
 **Installation**
