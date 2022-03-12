@@ -5,7 +5,7 @@
  <br>
  <strong>GUI for ViennaRNA</strong>
  [Explore the docs](https://github.com/kariBifs/Capston)
-.</p>
+</p>
 
 ## **About the Project**
 
