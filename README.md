@@ -2,7 +2,7 @@
 ![GitHub language](https://img.shields.io/badge/language-Python-red)
 <br>
 
-##**GUI for ViennaRNA Package**
+## **GUI for ViennaRNA Package**
 <p align="center">
  <img src = "imagesread/viennaout.png" width =200>
 </p>
