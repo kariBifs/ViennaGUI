@@ -15,19 +15,19 @@ The PostScript files generated are also displayed in a GUI.
 This is for local ViennaRNA.
 
 
-## **Motivation**
+**Motivation**
 <br>
 To make locally installed ViennaRNA package user-friendly.
 <br>
 
-## **Built with**
+**Built with**
 <br>
 -Python 3
 -tkinter
 -Ghostscript
 -Pillow
 <br>
-## **Build Status**
+**Build Status**
 <br>
 This app only works on Linux. Adaptation to Windows and MacOS will be added. RNAplfold functionality will also be added soon.
 <br>
