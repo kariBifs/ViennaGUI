@@ -1,9 +1,9 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/kariBifs/capston?color=color)
 ![GitHub language](https://img.shields.io/badge/language-Python-red)
 <p align="center">
- <img src = "imagesread/viennaout.png" width =100>.<p> 
+ <img src = "imagesread/viennaout.png" width =100>
  <br>
- [GUI for ViennaRNA package](https://github.com/kariBifs/Capston)
+ [\GUI for ViennaRNA package](https://github.com/kariBifs/Capston" GUI for ViennaRNA).<p>
 
 
 
