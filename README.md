@@ -3,7 +3,7 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
- [/GUI for ViennaRNA package](https://github.com/kariBifs/Capston" GUI for ViennaRNA).<p>
+ GUI for ViennaRNA Package.<p>
 
 
 
