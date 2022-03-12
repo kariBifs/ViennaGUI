@@ -5,7 +5,7 @@
  <br>
   <strong>GUI for ViennaRNA</strong>.</p>
 
-#**About the Project**
+# **About the Project**
 -------------
 <br>
 GUI for ViennaRNA is a
@@ -14,23 +14,25 @@ user input or from a file.The user is allowed to select one of the three program
 The PostScript files generated are also displayed in a GUI. 
 This is for local ViennaRNA.
 <br>
-##**Motivation**
+## **Motivation**
 <br>
 To make locally installed ViennaRNA package user-friendly.
 <br>
-##**Built with**
+## **Built with**
 <br>
 -Python 3
 -tkinter
 -Ghostscript
 -Pillow
 <br>
-##**Build Status**
+## **Build Status**
 <br>
 This app only works on Linux. Adaptation to Windows and MacOS will be added. RNAplfold functionality will also be added soon.
 <br>
-#**Getting Started**
+# **Getting Started**
 -------------
+
+
 **Installation**
 <br>
 Before running vienna_guiV5.py script ensure the 
