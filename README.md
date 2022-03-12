@@ -9,7 +9,7 @@
 
 GUI for ViennaRNA is a
 basic GUI that allows users to add sequences either as 
-user input or from a file.The user is allowed to select one of the three programs (RNAfold, RNAalifold, RNAplfold).
+user input or from a file. The user is allowed to select one of the three programs (RNAfold, RNAalifold, RNAplfold).
 The PostScript files generated are also displayed in a GUI. 
 This is for local ViennaRNA.
 <br>
