@@ -38,7 +38,7 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 **Screenshots**
 <br>
 <p align="center">
- <img src = "imagesread/Screenshot 2022-03-12 143326.png"width=450 height=300>
+ <img src = "imagesread/Screenshot 2022-03-12 143326.png"width=400 height=300>
 </p>
 <br>
 
@@ -70,5 +70,9 @@ to quitting or closing the program.
 <br>
 
 **Contribute**
+<br>
 If you have suggestions to improve this project or find some issues with it, please fork the repo and create a pull request.
+<br>
 **Contact**
+<br>
+Project Link: https://github.com/kariBifs/Capston
