@@ -3,19 +3,16 @@
 <p align="center">
  <img src = "imagesread/viennaout.png" width =100>
  <br>
- GUI for ViennaRNA Package.<p>
-
-
-
-<!--make title smaller and bold-->
+  <strong>GUI for ViennaRNA</strong>.</p>
 
 **About the Project**
+_____________
 <br>
-The ViennaRNA - RNAfold graphical user interface is a
+The ViennaRNA graphical user interface is a
 basic GUI to allow users to add sequences either as 
-user input or from a file and output the PostScript
-files that are generated. This is for local ViennaRNA
-RNAfold program.
+user input or from a file.The user is allowed to select one of the three programs (RNAfold, RNAalifold, RNAplfold).
+The PostScript files generated are then displayed in another GUI. 
+This is for local ViennaRNA.  
 <br>
 
 **Motivation**
@@ -24,8 +21,8 @@ To make locally installed ViennaRNA package user-friendly.
 <br>
 
 **Build Status**
-<br>
-At the moment the project has graphical user interface for RNAfold. More programs from the package will be added. Adaptation to Windows and MacOS will be added.
+<br>d
+Adaptation to Windows and MacOS will be added. RNAplfold functionality will also be added soon.
 <br>
 
 **Screenshots**
@@ -34,7 +31,7 @@ TBD later.
 
 **Installation**
 <br>
-Before running vienna_guiV4.py script ensure the 
+Before running vienna_guiV5.py script ensure the 
 following have been installed:
 
 - ViennaRNA package
@@ -56,3 +53,4 @@ to quitting or closing the program.
 <br>
 
 **Contribute**
+If you have suggestions to improve this project or find some issues with it, please fork the repo and create a pull request.
