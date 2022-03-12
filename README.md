@@ -1,12 +1,61 @@
-Vienna GUI for RNAfold
+![GitHub contributors](https://img.shields.io/github/contributors/kariBifs/capston?color=color)
+![GitHub language](https://img.shields.io/badge/language-Python-red)
+<p align="center">
+ <img src = "imagesread/viennaout.png" width =100>
+ <br>
+ <strong>GUI for ViennaRNA</strong>
+ </p>
+ <br>
+ 
+## **About the Project**
 
-The ViennaRNA - RNAfold graphical user interface is a
-basic GUI to allow users to add sequences either as 
-user input or from a file and output the PostScript
-files that are generated. This is for local ViennaRNA
-RNAfold program.
+GUI for ViennaRNA is a
+basic GUI that allows users to add sequences either as 
+user input or from a file. The user is allowed to select one of the three programs (RNAfold, RNAalifold, RNAplfold).
+The PostScript files generated are also displayed in a GUI. 
+This is for local ViennaRNA.
+<br>
 
-Before running vienna_guiV4.py script ensure the 
+**Motivation**
+<br>
+To make locally installed ViennaRNA package user-friendly.
+<br>
+
+**Built with**
+<br>
+-Python 3
+<br>
+-tkinter
+<br>
+-Ghostscript
+<br>
+-Pillow
+<br>
+
+**Build Status**
+<br>
+This app only works on Linux. Adaptation to Windows and MacOS will be added. RNAplfold functionality will also be added soon.
+<br>
+
+**Screenshots**
+<br>
+<p align="left">
+ <img src = "imagesread/Screenshot 2022-03-12 143326.png"width=250 height=200>
+ <img src = "imagesread/ViennaGuiBrow.png"width=250 height=200>
+ <img src = "imagesread/viennaout.png"width=250 height=200>
+</p>
+<br>
+
+## **Getting Started**
+
+
+**Requirements**
+<br>
+See [requirement.txt](https://github.com/kariBifs/Capston)
+<br>
+**Installation**
+<br>
+Before running vienna_guiV5.py script ensure the 
 following have been installed:
 
 - ViennaRNA package
@@ -24,3 +73,14 @@ The ViennaRNA - RNAfold GUI creates a tmp folder in the
 active directory. After quit or close the tmp folder will be 
 removed. If you need to save any files please do so prior
 to quitting or closing the program.
+<!--how to use?-->
+<br>
+
+**Contribute**
+<br>
+If you have suggestions to improve this project or find some issues with it, please fork the repo and create a pull request.
+<br>
+
+**Contact**
+<br>
+Project Link: https://github.com/kariBifs/Capston
