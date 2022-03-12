@@ -38,8 +38,8 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 **Screenshots**
 <br>
 <p align="left">
- <img src = "imagesread/Screenshot 2022-03-12 143326.png"width=400 height=300>
- <img src = "imagesread/ViennaGuiBrow.png"width=400 height=300>
+ <img src = "imagesread/Screenshot 2022-03-12 143326.png"width=300>
+ <img src = "imagesread/ViennaGuiBrow.png"width=300>
 </p>
 <br>
 
