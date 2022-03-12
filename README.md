@@ -7,28 +7,36 @@
 
 # **About the Project**
 -------------
-<br>
+
+
 GUI for ViennaRNA is a
 basic GUI that allows users to add sequences either as 
 user input or from a file.The user is allowed to select one of the three programs (RNAfold, RNAalifold, RNAplfold).
 The PostScript files generated are also displayed in a GUI. 
 This is for local ViennaRNA.
-<br>
+
+
 ## **Motivation**
-<br>
+
+
 To make locally installed ViennaRNA package user-friendly.
-<br>
+
+
 ## **Built with**
-<br>
+
+
 -Python 3
 -tkinter
 -Ghostscript
 -Pillow
-<br>
+
+
 ## **Build Status**
-<br>
+
+
 This app only works on Linux. Adaptation to Windows and MacOS will be added. RNAplfold functionality will also be added soon.
-<br>
+
+
 # **Getting Started**
 -------------
 
