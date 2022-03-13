@@ -46,7 +46,7 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
  <img src = "imagesread/viennaout.png"width=250 height=200>
 </p>
 <br>
-
+<a href="#top">Back to top</a>
 ## **Getting Started**
 
 
