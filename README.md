@@ -47,7 +47,7 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 </p>
 <br>
 <p align="right">
-<a href="#top">Back to top</a>.</p>
+<a href="#top">(Back to top)</a>.</p>
 <br>
 
 ## **Getting Started**
@@ -79,18 +79,22 @@ removed. If you need to save any files please do so prior
 to quitting or closing the program.
 <!--how to use?-->
 <br>
-<a href="#top">Back to top</a>
+<p align="right">
+<a href="#top">(Back to top)</a>.</p>
 <br>
 
 ## **Contribute**
 <br>
 If you have suggestions to improve this project or find some issues with it, please fork the repo and create a pull request.
 <br>
-<a href="#top">Back to top</a>
+<p align="right">
+<a href="#top">(Back to top)</a>.</p>
 <br>
 
 ## **Contact**
 <br>
 Project Link: https://github.com/kariBifs/Capston
 <br>
-<a href="#top">Back to top</a>
+<p align="right">
+<a href="#top">(Back to top)</a>.</p>
+<br>
