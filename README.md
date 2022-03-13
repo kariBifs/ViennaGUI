@@ -94,7 +94,7 @@ If you have suggestions to improve this project or find some issues with it, ple
 
 ## **License**
 <br>
-See [LICENSE](https://github.com/kariBifs/Capston)
+See [LICENSE.txt](https://github.com/kariBifs/Capston)
 <br>
 <p align="right">
 <a href="#top">(Back to top)</a>.</p>
