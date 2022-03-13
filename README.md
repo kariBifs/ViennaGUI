@@ -57,6 +57,7 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 <br>
 See [requirement.txt](https://github.com/kariBifs/Capston)
 <br>
+
 **Installation**
 <br>
 Before running vienna_guiV5.py script ensure the 
@@ -86,6 +87,14 @@ to quitting or closing the program.
 ## **Contribute**
 <br>
 If you have suggestions to improve this project or find some issues with it, please fork the repo and create a pull request.
+<br>
+<p align="right">
+<a href="#top">(Back to top)</a>.</p>
+<br>
+
+## **License**
+<br>
+See [LICENSE](https://github.com/kariBifs/Capston)
 <br>
 <p align="right">
 <a href="#top">(Back to top)</a>.</p>
