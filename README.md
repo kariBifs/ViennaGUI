@@ -52,12 +52,6 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 
 ## **Getting Started**
 
-
-!<--**Requirements**-->
-
-!<--See [requirement.txt](https://github.com/kariBifs/Capston)-->
-
-
 **Installation**
 <br>
 Before running vienna_guiV5.py script ensure the 
