@@ -95,7 +95,6 @@ If you have suggestions to improve this project or find some issues with it, ple
 ## **License**
 <br>
 Distributed under the MIT License.
-See [LICENSE](https://github.com/kariBifs/Capston)
 <br>
 
 <p align="right">
