@@ -92,8 +92,9 @@ If you have suggestions to improve this project or find some issues with it, ple
 <a href="#top">(Back to top)</a>.</p>
 <br>
 
-**License**
+## **License**
 <br>
+Distributed under the MIT License.
 See [LICENSE](https://github.com/kariBifs/Capston)
 <br>
 
