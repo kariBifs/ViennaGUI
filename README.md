@@ -83,7 +83,6 @@ to quitting or closing the program.
 <p align="right">
 <a href="#top">(Back to top)</a>.</p>
 <br>
-
 ## **Contribute**
 <br>
 If you have suggestions to improve this project or find some issues with it, please fork the repo and create a pull request.
