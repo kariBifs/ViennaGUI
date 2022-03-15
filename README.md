@@ -24,13 +24,13 @@ To make locally-installed ViennaRNA package user-friendly.
 
 **Built with**
 <br>
--Python 3
+-Python 3.9.7 & up
 <br>
 -tkinter
 <br>
--Ghostscript
+-Ghostscript 9.54.0 & up
 <br>
--Pillow
+-Pillow 9.0.1
 <br>
 
 **Build Status**
@@ -57,11 +57,10 @@ This app only works on Linux. Adaptation to Windows and MacOS will be added. RNA
 Before running vienna_guiV5.py script ensure the 
 following have been installed:
 
-- ViennaRNA package
-- Python3
-- tkinter
-- Pillow
-- Ghostscript
+- ViennaRNA package 2.4.7 & up
+- Python 3.9.7 & up
+- Pillow  9.0.1
+- Ghostscript 9.54.0 &up
 
 Ensure that all executables have been updated prior to
 running the script and that the vienna_config_v1.py file
