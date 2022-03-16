@@ -35,6 +35,7 @@ def browse():
     if file:
         filepath = os.path.abspath(file.name)
         #print (filepath)
+        browse_box.delete(0, 'end')
         browse_box.insert(0, filepath)
         
 #This function opens browse window for alignment files only.
@@ -50,7 +51,9 @@ def browse_aln():
     if file:
         filepath = os.path.abspath(file.name)
         #print (filepath)
+        browse_box.delete(0, 'end')
         browse_box.insert(0, filepath)
+
 
 #This function dictates what happens when the checkbutton widget
 #is checked. When checked, hide large textbox and show the browse
@@ -74,19 +77,21 @@ def isChecked():
 def fold_select():
     if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
        remove(browse_box)
-       remove(browse_btn)
        remove(browse_btn2)
+       remove(browse_btn)
        cb.set(0)
        print("textbox present")
        print("checkbox present")
        
     elif browse_box.winfo_ismapped() == True:
        remove(browse_box)
-       remove(browse_btn)
        remove(browse_btn2)
+       remove(browse_btn)
        display(txt_seq)
        cb.set(0)
        display(cb_file)
+          #cb_file.grid(row=6, column=1, columnspan=5, 
+          #             sticky=W, padx=5, pady=5)
              
     else:
        cb.set(0)
@@ -101,21 +106,22 @@ def aln_select():
     display(browse_box)
     browse_box.delete(0, 'end')
     display(browse_btn2)
+    
 
 #This function will display widgets for RNAplfold program
 def pl_select():
     if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
        remove(browse_box)
-       remove(browse_btn)
        remove(browse_btn2)
+       remove(browse_btn)
        cb.set(0)
        print("textbox present")
        print("checkbox present")
        
     elif browse_box.winfo_ismapped() == True:
-       remove(browse_box)
-       remove(browse_btn)
+       browse_box.grid_remove()
        remove(browse_btn2)
+       remove(browse_btn)
        display(txt_seq)
        cb.set(0)
        display(cb_file)
@@ -150,10 +156,11 @@ def go_event():
           open_file()
           
     elif rbtn.get()==2:
-       output = subprocess.run(["RNAalifold", filepath])
+       subprocess.run(["RNAalifold", filepath])
        #find the ps file
        find_file()
-
+       #display the output in terminal     
+       #print (output)
        #open the ps file on canvas      
        open_file()
        
@@ -162,10 +169,11 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          subprocess.run("RNAplfold < input.txt", shell=True)
+          output = subprocess.run("RNAplfold < input.txt", shell=True)
           #find the ps file
           find_file()
-
+          #display the output in terminal  
+          #print (output)
           #open the ps file on canvas      
           open_file()
             
@@ -206,14 +214,14 @@ def open_file():
         
     #Open the ps file    
     img_open = Image.open(ps_loc)
-    img_w, img_h = img_open.size 
-    #img_open = img_open.resize((600, 600), Image.ANTIALIAS)
+    img_w, img_h = img_open.size
+    
     global img
     img = ImageTk.PhotoImage(img_open)
     
     #Create a blank canvas
-    ps_canvas = Canvas(ps_window, width= img_w, height= img_h, bg= "white", 
-    highlightthickness=0)
+    ps_canvas = Canvas(ps_window, width = img_w, height = img_h, 
+                       bg= "white", highlightthickness=0)
     
     #Paste the ps file onto the canvas
     ps_canvas.create_image(0, 0, anchor="nw", image=img)
@@ -291,7 +299,8 @@ remove(browse_btn)
 browse_btn2 = Button(window, text="Browse", command=browse_aln)
 browse_btn2.grid(row=3, column=7, sticky=W, padx=5, pady=5)
 remove(browse_btn2)
-
+    
+    
 #Quit button on main GUI window to delete tmp and close program
 quit_btn = Button(window, text="Quit", command=quit_prg)
 quit_btn.grid(row=6, column=7, padx=5, pady=5)
