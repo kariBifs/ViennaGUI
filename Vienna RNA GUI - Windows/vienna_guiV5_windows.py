@@ -55,13 +55,12 @@ def browse_aln():
 #browse button
 def isChecked():
     if cb.get():
-        global browse_box
+        
         remove(txt_seq)
-        browse_box = Entry(window)
-        browse_box.grid(row=3, column=1, columnspan=6, padx=5, pady=5)
-        global browse_btn
-        browse_btn =  Button(window, text="Browse", command=browse)
-        browse_btn.grid(row=3, column=6, padx=5, pady=5)
+        display(browse_box)
+        browse_box.delete(0, 'end')
+        display(browse_btn)
+
                                 
     else:
         remove(browse_box)
@@ -99,6 +98,7 @@ def aln_select():
     remove(cb_file)
     
     display(browse_box)
+    browse_box.delete(0, 'end')
     display(browse_btn2)
     
     #browse_btn2 = Button(window, text="Browse", command=browse_aln)
