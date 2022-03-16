@@ -61,6 +61,7 @@ def isChecked():
         
         remove(txt_seq)
         display(browse_box)
+        browse_box.delete(0, 'end')
         display(browse_btn)
 
                                 
@@ -98,6 +99,7 @@ def aln_select():
     remove(cb_file)
     
     display(browse_box)
+    browse_box.delete(0, 'end')
     display(browse_btn2)
 
 #This function will display widgets for RNAplfold program
