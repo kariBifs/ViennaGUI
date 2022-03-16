@@ -136,7 +136,7 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          subprocess.run(["RNAfold", "input.txt"])  
+          subprocess.run(["RNAfold.exe", "input.txt"])  
           #find the ps file
           find_file()
           #open the ps file on canvas      
@@ -144,7 +144,7 @@ def go_event():
             
        #else do this instead
        else:
-          subprocess.run(["RNAfold", filepath])
+          subprocess.run(["RNAfold.exe", filepath])
           #find the ps file
           find_file()
           
@@ -152,7 +152,7 @@ def go_event():
           open_file()
           
     elif rbtn.get()==2:
-       subprocess.run(["RNAalifold", filepath])
+       subprocess.run(["RNAalifold.exe", filepath])
        #find the ps file
        find_file()
        #display the output in terminal     
@@ -165,7 +165,7 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          output = subprocess.run("RNAplfold < input.txt", shell=True)
+          output = subprocess.run("RNAplfold.exe < input.txt", shell=True)
           #find the ps file
           find_file()
           #display the output in terminal  
@@ -175,7 +175,7 @@ def go_event():
             
        #else do this instead
        else:
-          subprocess.run("RNAplfold < %s" %filepath,
+          subprocess.run("RNAplfold.exe < %s" %filepath,
                         shell=True)
           #find the ps file
           find_file()
