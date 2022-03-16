@@ -31,6 +31,7 @@ def browse():
     if file:
         filepath = os.path.abspath(file.name)
         #print (filepath)
+        browse_box.delete(0, 'end')
         browse_box.insert(0, filepath)
         
 #This function opens browse window for alignment files only.
@@ -46,6 +47,7 @@ def browse_aln():
     if file:
         filepath = os.path.abspath(file.name)
         #print (filepath)
+        browse_box.delete(0, 'end')
         browse_box.insert(0, filepath)
         
 
@@ -101,8 +103,7 @@ def aln_select():
     browse_box.delete(0, 'end')
     display(browse_btn2)
     
-    #browse_btn2 = Button(window, text="Browse", command=browse_aln)
-    #browse_btn2.grid(row=3, column=7, sticky=W, padx=5, pady=5)
+
 
 #This function will display widgets for RNAplfold program
 def pl_select():
@@ -136,7 +137,7 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          subprocess.run(["RNAfold.exe", "input.txt"])  
+          subprocess.run(["RNAfold", "input.txt"])  
           #find the ps file
           find_file()
           #open the ps file on canvas      
@@ -144,7 +145,7 @@ def go_event():
             
        #else do this instead
        else:
-          subprocess.run(["RNAfold.exe", filepath])
+          subprocess.run(["RNAfold", filepath])
           #find the ps file
           find_file()
           
@@ -152,7 +153,7 @@ def go_event():
           open_file()
           
     elif rbtn.get()==2:
-       subprocess.run(["RNAalifold.exe", filepath])
+       subprocess.run(["RNAalifold", filepath])
        #find the ps file
        find_file()
        #display the output in terminal     
@@ -165,7 +166,7 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          output = subprocess.run("RNAplfold.exe < input.txt", shell=True)
+          output = subprocess.run("RNAplfold < input.txt", shell=True)
           #find the ps file
           find_file()
           #display the output in terminal  
@@ -175,7 +176,7 @@ def go_event():
             
        #else do this instead
        else:
-          subprocess.run("RNAplfold.exe < %s" %filepath,
+          subprocess.run("RNAplfold < %s" %filepath,
                         shell=True)
           #find the ps file
           find_file()
