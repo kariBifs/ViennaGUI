@@ -4,7 +4,7 @@
 
 #Import modules for main GUI program
 import vienna_config_v1
-import os, sys, subprocess, shutil
+import os, sys, subprocess, shutil, time
 import tkinter
 from tkinter import *
 from tkinter import messagebox
@@ -74,7 +74,7 @@ def isChecked():
         display(txt_seq)
 
 #This function will display widgets for RNAfold program
-def fold_select():
+def fold_pl_select():
     if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
        remove(browse_box)
        remove(browse_btn2)
@@ -107,30 +107,6 @@ def aln_select():
     browse_box.delete(0, 'end')
     display(browse_btn2)
     
-
-#This function will display widgets for RNAplfold program
-def pl_select():
-    if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
-       remove(browse_box)
-       remove(browse_btn2)
-       remove(browse_btn)
-       cb.set(0)
-       print("textbox present")
-       print("checkbox present")
-       
-    elif browse_box.winfo_ismapped() == True:
-       browse_box.grid_remove()
-       remove(browse_btn2)
-       remove(browse_btn)
-       display(txt_seq)
-       cb.set(0)
-       display(cb_file)
-          
-          #cb_file.grid(row=6, column=1, columnspan=5, sticky=W,
-          #            padx=5, pady=5)
-    else:
-       cb.set(0)
-       print("nothing to change")
 
 #This function will give output after the go button is pressed, 
 #depending on input from text box or opening file
@@ -196,7 +172,9 @@ def find_file():
     for x in list_dir:
        if x.endswith(".ps"):
           find_ps.append(x)
-      
+    
+    #sort the list by time ascending
+    find_ps = sorted(find_ps, key=os.path.getmtime)
     #returns a list of all ps files
     return find_ps
 
@@ -230,7 +208,7 @@ def open_file():
 #Function to quit the program and check if user is sure they want to quit
 def quit_prg():
     if messagebox.askokcancel("Quit", 
-        "Quitting with delete files\nDo you want to quit?"):
+        "Quitting will delete files\nDo you want to quit?"):
         #change out of directory
         os.chdir('..')
         #remove tmp directory
@@ -254,7 +232,7 @@ prg_title = Label(window, text="Welcome to Vienna RNA Program",
        row=0, columnspan=15, padx=5, pady=5)
        
 prg_choice1 = Radiobutton(window, text="RNAfold", variable=rbtn,
-       value=1, command=fold_select)
+       value=1, command=fold_pl_select)
 prg_choice1.grid(row=1, column=3)
        
 prg_choice2 = Radiobutton(window, text="RNAalifold", variable=rbtn,
@@ -262,7 +240,7 @@ prg_choice2 = Radiobutton(window, text="RNAalifold", variable=rbtn,
 prg_choice2.grid(row=1, column=4, padx=3, pady=3)
 
 prg_choice3 = Radiobutton(window, text="RNAplfold", variable=rbtn,
-       value=3, command=pl_select) 
+       value=3, command=fold_pl_select) 
 prg_choice3.grid(row=1, column=5)
 rbtn.set(1)
 
