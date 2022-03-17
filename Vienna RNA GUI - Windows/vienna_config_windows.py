@@ -6,6 +6,21 @@ import subprocess
 from itertools import chain
 
 paths_search = ["C:\\Program Files", "C:\\Program Files (x86)"]
+rnafold_path = []
+
+global gs_path, find_gs
+gs_path = []
+
+def find_file(filename):
+    found_path = ''
+    for path, dirs, files in chain.from_iterable(
+       os.walk(path) for path in paths_search):
+         if filename in files:
+           print('Path found')
+           found_path = []
+           found_path.append(path)
+           break
+    return found_path
 
 #Find the executable
 find_exe = shutil.which("RNAfold.exe")
@@ -15,16 +30,13 @@ find_exe = shutil.which("RNAfold.exe")
 
 #Get the directory of executable
 exe_path = os.path.dirname(find_exe)
-exe_path_list = []
+#exe_path_list = []
 
         
 if exe_path is None:
-    for path, dirs, files in chain.from_iterable(
-       os.walk(path) for path in paths_search):
-         if 'RNAfold.exe' in files:
-           exe_path_list.append(path)
-    print(exe_path_list)
-    sys.path.append(exe_path_list[0])
+    rnafold_path = find_file('RNAfold.exe')
+    print(rnafold_path + '\nAdd to enviornment variables')
+    sys.exit()
     
 #Check if directory is in PATH
 if os.path.isdir(exe_path) == True:
@@ -36,15 +48,12 @@ else:
 
 #Check if ghostscript is installed
 find_gs = shutil.which("gswin64.exe")
-gs_path = []
 
 if find_gs == None:
-    for path, dirs, files in chain.from_iterable(
-      os.walk(path) for path in paths_search):
-        if 'gswin64.exe' in files:
-           gs_path.append(path)
-    print (gs_path)
+    gs_path = find_file('gswin64.exe')
+    #print (gs_path)
     sys.path.append(gs_path[0])
+    #print(sys.path)
     print ("Ghostscript...............added")
    
 else:
