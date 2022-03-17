@@ -1,17 +1,19 @@
 #Import modules for main GUI program
 import vienna_config_windows
-import os, sys, subprocess, shutil
+from vienna_config_windows import gs_path, find_gs
+import os, sys, subprocess, shutil, time
 import tkinter
 from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfile
-from PIL import Image, ImageTk
+from PIL import Image, ImageTk, EpsImagePlugin
+
 
 #Define functions for the GUI
 
 #This function shows the widget
 def display(widget1):
-    widget1.grid(row=3, column=1, columnspan = 6, padx=5, pady=25)
+    widget1.grid()
 
 #This function hides the widget
 def remove(widget1):
@@ -70,7 +72,7 @@ def isChecked():
         display(txt_seq)
         
 #This function will display widgets for RNAfold program
-def fold_select():
+def fold_pl_select():
     if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
        remove(browse_box)
        remove(browse_btn2)
@@ -105,30 +107,6 @@ def aln_select():
     
 
 
-#This function will display widgets for RNAplfold program
-def pl_select():
-    if txt_seq.winfo_ismapped() == True and cb_file.winfo_ismapped() == True:
-       remove(browse_box)
-       remove(browse_btn2)
-       remove(browse_btn)
-       cb.set(0)
-       print("textbox present")
-       print("checkbox present")
-       
-    elif browse_box.winfo_ismapped() == True:
-       browse_box.grid_remove()
-       remove(browse_btn2)
-       remove(browse_btn)
-       display(txt_seq)
-       cb.set(0)
-       display(cb_file)
-          
-          #cb_file.grid(row=6, column=1, columnspan=5, sticky=W,
-          #            padx=5, pady=5)
-    else:
-       cb.set(0)
-       print("nothing to change")
-
 #This function will give output after the go button is pressed, 
 #depending on input from text box or opening file
 def go_event():
@@ -137,7 +115,7 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          subprocess.run(["RNAfold", "input.txt"])  
+          subprocess.run(["RNAfold.exe", "input.txt"])  
           #find the ps file
           find_file()
           #open the ps file on canvas      
@@ -145,7 +123,7 @@ def go_event():
             
        #else do this instead
        else:
-          subprocess.run(["RNAfold", filepath])
+          subprocess.run(["RNAfold.exe", filepath])
           #find the ps file
           find_file()
           
@@ -153,7 +131,7 @@ def go_event():
           open_file()
           
     elif rbtn.get()==2:
-       subprocess.run(["RNAalifold", filepath])
+       subprocess.run(["RNAalifold.exe", filepath])
        #find the ps file
        find_file()
        #display the output in terminal     
@@ -166,7 +144,7 @@ def go_event():
        if txt_seq.winfo_ismapped() == True:
           with open ("input.txt", "w") as usr_inp:
             usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          output = subprocess.run("RNAplfold < input.txt", shell=True)
+          output = subprocess.run("RNAplfold.exe < input.txt", shell=True)
           #find the ps file
           find_file()
           #display the output in terminal  
@@ -176,7 +154,7 @@ def go_event():
             
        #else do this instead
        else:
-          subprocess.run("RNAplfold < %s" %filepath,
+          subprocess.run("RNAplfold.exe < %s" %filepath,
                         shell=True)
           #find the ps file
           find_file()
@@ -197,6 +175,10 @@ def find_file():
           find_ps.append(x)
           
     #for confirmation purpose
+    #print(find_ps)
+    
+    #This will sort the list by ascending time
+    find_ps = sorted(find_ps, key=os.path.getmtime)
     return find_ps
 
 #This function will open ps file in a different window
@@ -206,14 +188,27 @@ def open_file():
     ps_window.title("Output")
     
     ps_loc = ""
+    
     print(find_ps)
+    
     for y in find_ps:
        ps_loc = os.path.join(os.getcwd(),y)
        
-        
-    #Open the ps file    
-    img_open = Image.open(ps_loc)
-    img_w, img_h = img_open.size
+    if find_gs == None:
+       #Uncomment to check the path
+       #print (gs_path[0])
+       bin_gs = os.path.join(gs_path[0],'gswin64c')
+       #For debugging purpose, uncomment if needed
+       #print (bin_gs)
+       EpsImagePlugin.gs_windows_binary = bin_gs
+       img_open = Image.open(ps_loc)
+       img_w, img_h = img_open.size
+
+    else:
+       #Open the ps file    
+       img_open = Image.open(ps_loc)
+       img_w, img_h = img_open.size    
+    
     
     global img
     img = ImageTk.PhotoImage(img_open)
@@ -230,7 +225,7 @@ def open_file():
 #Function to quit the program and check if user is sure they want to quit
 def quit_prg():
     if messagebox.askokcancel("Quit", 
-        "Quitting with delete files\nDo you want to quit?"):
+        "Quitting will delete files\nDo you want to quit?"):
         #change out of directory
         os.chdir('..')
         #remove tmp directory
@@ -253,7 +248,7 @@ prg_title = Label(window, text="Welcome to Vienna RNA Program",
        row=0, columnspan=15, padx=5, pady=5)
        
 prg_choice1 = Radiobutton(window, text="RNAfold", variable=rbtn,
-       value=1, command=fold_select)
+       value=1, command=fold_pl_select)
 prg_choice1.grid(row=1, column=3)
        
 prg_choice2 = Radiobutton(window, text="RNAalifold", variable=rbtn,
@@ -261,7 +256,7 @@ prg_choice2 = Radiobutton(window, text="RNAalifold", variable=rbtn,
 prg_choice2.grid(row=1, column=4, padx=3, pady=3)
 
 prg_choice3 = Radiobutton(window, text="RNAplfold", variable=rbtn,
-       value=3, command=pl_select) 
+       value=3, command=fold_pl_select) 
 prg_choice3.grid(row=1, column=5)
 rbtn.set(1)
 
@@ -303,7 +298,7 @@ remove(browse_btn2)
 
 #Quit button on window
 quit_btn = Button(window, text="Quit", command=quit_prg)
-quit_btn.grid(row=4, column=11, padx=5, pady=5)
+quit_btn.grid(row=6, column=7, padx=5, pady=5)
 
 #Delete tmp and close program
 window.protocol("WM_DELETE_WINDOW", quit_prg)
