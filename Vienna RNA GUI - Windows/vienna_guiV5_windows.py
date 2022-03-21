@@ -183,43 +183,70 @@ def find_file():
 
 #This function will open ps file in a different window
 def open_file():
-    ps_window = Toplevel(window)
+    #ps_window = Toplevel(window)
     #Toplevel window title and dimensions
-    ps_window.title("Output")
+    #ps_window.title("Output")
     
+    #This block of code modified by Karina#
+    #empty variable and list
     ps_loc = ""
+    ps_loc_list = []
     
-    print(find_ps)
+    #For debugging purposes
+    #print(find_ps)
     
+    #For loop that loops through list and gets
+    #path for the ps files in tmp folder
     for y in find_ps:
        ps_loc = os.path.join(os.getcwd(),y)
        
-    if find_gs == None:
-       #Uncomment to check the path
-       #print (gs_path[0])
-       bin_gs = os.path.join(gs_path[0],'gswin64c')
-       #For debugging purpose, uncomment if needed
-       #print (bin_gs)
-       EpsImagePlugin.gs_windows_binary = bin_gs
-       img_open = Image.open(ps_loc)
-       img_w, img_h = img_open.size
-
-    else:
+       #For debugging purposes
+       #print(ps_loc)
+       
+       #Adds the path to ps_loc_list
+       ps_loc_list.append(ps_loc)
+      
+    #For debugging purposes to ensure all paths
+    #were added to list
+    print(ps_loc_list)
+    
+    #For loop to go through the ps_loc_list and open
+    #ps files. 
+    #Ana modification: if Ghostscript is not in 
+    #the environment variables, edit the gs binary    
+    for p in ps_loc_list: 
+        
+       if find_gs == None:
+          #Uncomment to check the path
+          #print (gs_path[0])
+          bin_gs = os.path.join(gs_path[0],'gswin64c')
+          #For debugging purpose, uncomment if needed
+          #print (bin_gs)
+          EpsImagePlugin.gs_windows_binary = bin_gs
+          img_open = Image.open(p)
+          #img_w, img_h = img_open.size
+          img_open.show()
+       
+       #Code does this if gs is in environment variable
+       #for windows
+       else:
        #Open the ps file    
-       img_open = Image.open(ps_loc)
-       img_w, img_h = img_open.size    
+          img_open = Image.open(p)
+          #img_w, img_h = img_open.size 
+          img_open.show()          
     
-    
-    global img
-    img = ImageTk.PhotoImage(img_open)
+    #Rest is commented out to check if the above works
+    #prior to removal
+    #global img
+    #img = ImageTk.PhotoImage(img_open)
     
     #Create a blank canvas
-    ps_canvas = Canvas(ps_window, width = img_w, height = img_h, 
-                       bg= "white", highlightthickness=0)
+    #ps_canvas = Canvas(ps_window, width = img_w, height = img_h, 
+    #                   bg= "white", highlightthickness=0)
     
     #Paste the ps file onto the canvas
-    ps_canvas.create_image(0, 0, anchor="nw", image=img)
-    ps_canvas.grid()
+    #ps_canvas.create_image(0, 0, anchor="nw", image=img)
+    #ps_canvas.grid()
     
 
 #Function to quit the program and check if user is sure they want to quit
