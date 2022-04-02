@@ -42,7 +42,7 @@ def browse_aln():
     file = askopenfile(mode='rb', title='Choose a file',
     filetypes=(('Clustal files','*.aln'), ('Stockholm', '*.sto *.stk'),
                ('fasta files','*.fa *.fasta *.fna *.ffn *.faa *.frn'),
-               ('MAF files', '*.maf'), ('text files','*.txt')))
+               ('MAF files', '*.maf')))
     
     global filepath
     filepath = ""
