@@ -92,7 +92,7 @@ Distributed under the MIT License.
 
 ## **Contact**
 <br>
-Project Link: https://github.com/kariBifs/Capston
+Project Link: https://github.com/kariBifs/ViennaGUI.git
 <br>
 <p align="right">
 <a href="#top">(Back to top)</a>.</p>
