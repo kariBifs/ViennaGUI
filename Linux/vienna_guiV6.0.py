@@ -3,7 +3,7 @@
 #This program is for Linux only
 
 #Import modules for main GUI program
-#import vienna_config_v1.py
+import vienna_config_v1.py
 import os, sys, subprocess, shutil, time
 import tkinter as tk
 import io
@@ -212,6 +212,18 @@ def open_file():
     ps_canvas.create_image(0, 0, anchor="nw", image=img)
     ps_canvas.grid()
 
+    #add a download button so the images can be downloaded
+    download_btn = Button(ps_window, text='Download', width=5, height=1, bd='5',command=save_image)
+    download_btn.place(x=img_w-75, y=0, anchor="nw")
+    
+#This function will download the output
+def save_image():
+	image = Image.open(ps_loc)
+	size = width, height = image.size
+	home = os.path.join(os.path.join(os.path.expanduser('~')), 'home')
+	image.save(home + '_viennaRNA_output', 'JPEG')
+	del image
+
 #Function to quit the program and check if user is sure they want to quit
 def quit_prg():
     if messagebox.askokcancel("Quit", 
@@ -225,7 +237,7 @@ def quit_prg():
 
 #function for help button command to pull url from web
 def open_help():
-    webbrowser.open_new('https://download.brother.com/welcome/doc002339/cv_mfc7440n_usaeng_soft_b.pdf')
+    webbrowser.open_new('https://github.com/christopherota/ViennaGUI/blob/fcc4c8bf59847437cc5aaa1c8fba28f27335e1c7/Linux/Table%20of%20Contents.pdf?raw=true')
 
     
 #splash screen window dimmensions, labels, and text
@@ -268,6 +280,7 @@ def main_window():
     
     window = tk.Tk()
     window.title ("ViennaRNA Package")
+    window.config(bg='#36454f')
     
     #Variables for checkbutton and radio button
     cb = IntVar()
@@ -276,24 +289,24 @@ def main_window():
 #Additional details for main GUI window
 #Welcome and enter sequence labels on main GUI window
     prg_title = Label(window, text="Welcome to Vienna RNA Program",
-       font=("Times New Roman", 14)).grid(
+       font=("Times New Roman", 14),bg='#36454f', fg="white").grid(
        row=0, columnspan=15, padx=5, pady=5)
        
     prg_choice1 = Radiobutton(window, text="RNAfold", variable=rbtn,
-       value=1, command=fold_pl_select)
+       value=1, command=fold_pl_select, bg='#36454f', fg="white")
     prg_choice1.grid(row=1, column=3)
        
     prg_choice2 = Radiobutton(window, text="RNAalifold", variable=rbtn,
-       value=2, command=aln_select)
+       value=2, command=aln_select, bg='#36454f', fg="white")
     prg_choice2.grid(row=1, column=4, padx=3, pady=3)
 
     prg_choice3 = Radiobutton(window, text="RNAplfold", variable=rbtn,
-       value=3, command=fold_pl_select) 
+       value=3, command=fold_pl_select, bg='#36454f', fg="white") 
     prg_choice3.grid(row=1, column=5)
     rbtn.set(1)
 
     lbl_seq = Label(window, text="Enter RNA sequence: ",
-       font=("Times New Roman", 12)).grid(
+       font=("Times New Roman", 12), bg='#36454f', fg="white").grid(
        row=2, columnspan=15, padx=5, pady=5)
 
 #Text box and go button on main GUI window
@@ -304,12 +317,11 @@ def main_window():
     txt_seq.grid(row=4, column=1, columnspan=5, padx=5, pady=25)
     inp_seq = txt_seq.get(1.0, "end-1c")
 
-    go_btn = Button(window, text="Go", command=go_event)
-    go_btn.grid(row=4, column=7, padx=5, pady=10)     
+    go_btn = Button(window, text="Go", command=go_event, highlightbackground='#36454f').grid(row=4, column=7, padx=5, pady=10)
 
 
 #Checkbutton and browse on main GUI window
-    cb_file = Checkbutton(window, text="To upload file, check box", variable=cb,command= isChecked)
+    cb_file = Checkbutton(window, text="To upload file, check box", variable=cb,command= isChecked, bg='#36454f',fg='white')
     cb_file.grid(row=6, column=1, columnspan=5, sticky=W, padx=5, pady=5)  
     cb.set(0)
 
@@ -325,11 +337,11 @@ def main_window():
     browse_btn2.grid(row=3, column=7, sticky=W, padx=5, pady=5)
     remove(browse_btn2)
 
-    help_button = tk.Button(window, text="Help", command=open_help)
+    help_button = tk.Button(window, text="Help", highlightbackground='#36454f', command=open_help)
     help_button.grid(row=0, column=7, padx=3, pady=3)
     
 #Quit button on main GUI window to delete tmp and close program
-    quit_btn = Button(window, text="Quit", command=quit_prg)
+    quit_btn = Button(window, text="Quit", command=quit_prg, highlightbackground='#36454f')
     quit_btn.grid(row=6, column=7, padx=5, pady=5)
 
 
@@ -339,6 +351,11 @@ def main_window():
 
 
 splash_screen()
+
+
+
+
+
 
 
 
