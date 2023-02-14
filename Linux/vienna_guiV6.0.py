@@ -269,10 +269,10 @@ def splash_screen():
     splash_root.title("ViennaRNA")
     splash_root.config(bg='#36454f')
 
-    img = Image.open("RNAimg.png")
-    img1 = ImageTk.PhotoImage(img)
-    img_label = tk.Label(splash_root, image=img1)
-    img_label.image = img1
+    img1 = Image.open("RNAimg.png")
+    img2 = ImageTk.PhotoImage(img1)
+    img_label = tk.Label(splash_root, image=img2)
+    img_label.image = img2
     img_label.pack(side="top", fill="both", expand=True)
 
 
