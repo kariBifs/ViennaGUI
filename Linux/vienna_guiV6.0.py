@@ -3,7 +3,7 @@
 #This program is for Linux only
 
 #Import modules for main GUI program
-import vienna_config_v1.py
+import vienna_config_v1
 import os, sys, subprocess, shutil, time
 import tkinter as tk
 import io
@@ -12,8 +12,10 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
+from PIL.PngImagePlugin import PngInfo
 from io import BytesIO
 import requests
+
 
 
 
