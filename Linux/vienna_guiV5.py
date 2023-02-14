@@ -1,6 +1,6 @@
 #This is a GUI program for the top three commonly used
 #Vienna RNA programs, RNAfold, RNAalifold, and RNAplfold.
-#This program is for Linux only
+#This program is for Linux only 
 
 #Import modules for main GUI program
 import vienna_config_v1
