@@ -229,8 +229,9 @@ def save_image():
 	metadata.add_text("program",program)
 	metadata.add_text("user input",user_input)
 	size = width, height = image.size
-	home = os.path.join(os.path.join(os.path.expanduser('~')), 'home')
-	image.save(home + '_viennaRNA_output.png', pnginfo=metadata)
+	file_path = filedialog.askdirectory()
+	path = os.path.join(file_path, 'home')
+	image.save(path + '_ViennaRNA.png', pnginfo=metadata)
 	del image
 
 #Function to quit the program and check if user is sure they want to quit
