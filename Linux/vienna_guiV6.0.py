@@ -15,7 +15,7 @@ from PIL import Image, ImageTk
 from PIL.PngImagePlugin import PngInfo
 from io import BytesIO
 import requests
-
+import urllib.request
 
 
 
@@ -271,10 +271,13 @@ def splash_screen():
     splash_root.title("ViennaRNA")
     splash_root.config(bg='#36454f')
 
-    img1 = Image.open("RNAimg.png")
-    img2 = ImageTk.PhotoImage(img1)
-    img_label = tk.Label(splash_root, image=img2)
-    img_label.image = img2
+    splash_img = 'https://github.com/christopherota/ViennaGUI/blob/main/Linux/RNAimg.png?raw=true'
+    with urllib.request.urlopen(splash_img) as u:
+        raw_data = u.read()
+    im = Image.open(BytesIO(raw_data))
+    img1 = ImageTk.PhotoImage(im)
+    img_label = tk.Label(splash_root, image=img1)
+    img_label.image = img1
     img_label.pack(side="top", fill="both", expand=True)
 
 
@@ -287,6 +290,7 @@ def splash_screen():
 #limits splash screen to 5 seconds and moves to main_window protocol to close and open main window.
     splash_root.after(4000,main_window)
     splash_root.after(4100,splash_root.destroy)
+
 
 #function to open main window after destroying splash screen
 #Main GUI window title and dimensions
