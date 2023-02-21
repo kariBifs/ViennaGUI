@@ -219,7 +219,7 @@ def open_file():
     ps_canvas.grid()
     
     #add a download button so the images can be downloaded
-    download_btn = Button(ps_window, text='Download', width=5, height=1, bd='5',	command=save_image)
+    download_btn = Button(ps_window, text='Save', width=5, height=1, bd='5', command=save_image)
     download_btn.place(x=img_w-75, y=0, anchor="nw")
     
 #This function will download the output
@@ -230,7 +230,7 @@ def save_image():
 	metadata.add_text("user input",user_input)
 	size = width, height = image.size
 	file_path = filedialog.askdirectory()
-	path = os.path.join(file_path, 'home')
+	path = os.path.join(file_path, 'photo')
 	image.save(path + '_ViennaRNA.png', pnginfo=metadata)
 	del image
 
