@@ -1,15 +1,24 @@
 #This is a GUI program for the top three commonly used
 #Vienna RNA programs, RNAfold, RNAalifold, and RNAplfold.
-#This program is for Linux only 
+#This program is for Linux only
 
 #Import modules for main GUI program
 import vienna_config_v1
 import os, sys, subprocess, shutil, time
-import tkinter
+import tkinter as tk
+import io
+import webbrowser
 from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
+from PIL.PngImagePlugin import PngInfo
+from io import BytesIO
+import requests
+import urllib.request
+
+
+
 
 
 #Define functions for the GUI
@@ -111,6 +120,8 @@ def aln_select():
 #This function will give output after the go button is pressed, 
 #depending on input from text box or opening file
 def go_event():
+    global program
+    global user_input
     if rbtn.get()==1:
        #if txt_seq is showing do the following
        if txt_seq.winfo_ismapped() == True:
@@ -121,6 +132,8 @@ def go_event():
           find_file()
           #open the ps file on canvas      
           open_file()
+          program = "RNAfold"
+          user_input = "text"
             
        #else do this instead
        else:
@@ -130,6 +143,8 @@ def go_event():
           
           #open the ps file on canvas      
           open_file()
+          program = "RNAfold"
+          user_input = "file"
           
     elif rbtn.get()==2:
        subprocess.run(["RNAalifold", filepath])
@@ -139,6 +154,8 @@ def go_event():
        #print (output)
        #open the ps file on canvas      
        open_file()
+       program = "RNAalifold"
+       user_input = "file"
        
     else:   
        #if txt_seq is showing do the following
@@ -152,6 +169,8 @@ def go_event():
           #print (output)
           #open the ps file on canvas      
           open_file()
+          program = "RNAplfold"
+          user_input = "text"
             
        #else do this instead
        else:
@@ -163,6 +182,8 @@ def go_event():
           #print (output)
           #open the ps file on canvas      
           open_file()    
+          program = "RNAplfold"
+          user_input = "file"
         
 #This function will find all .ps files within tmp folder
 def find_file():
@@ -205,6 +226,22 @@ def open_file():
     ps_canvas.create_image(0, 0, anchor="nw", image=img)
     ps_canvas.grid()
 
+    #add a download button so the images can be downloaded
+    download_btn = Button(ps_window, text='Save', width=5, height=1, bd='5', command=save_image)
+    download_btn.place(x=img_w-75, y=0, anchor="nw")
+    
+#This function will download the output
+def save_image():
+	image = Image.open(ps_loc)
+	metadata = PngInfo()
+	metadata.add_text("program",program)
+	metadata.add_text("user input",user_input)
+	size = width, height = image.size
+	file_path = filedialog.askdirectory()
+	path = os.path.join(file_path, 'photo')
+	image.save(path + '_ViennaRNA.png', pnginfo=metadata)
+	del image
+
 #Function to quit the program and check if user is sure they want to quit
 def quit_prg():
     if messagebox.askokcancel("Quit", 
@@ -216,75 +253,132 @@ def quit_prg():
         #remove main GUI window
         window.destroy()
 
-#Main GUI window title and dimensions
-#The GUI uses grid as the geometry manager
-window = Tk()
-window.title ("ViennaRNA Package")
+#function for help button command to pull url from web
+def open_help():
+    webbrowser.open_new('https://github.com/christopherota/ViennaGUI/blob/fcc4c8bf59847437cc5aaa1c8fba28f27335e1c7/Linux/Table%20of%20Contents.pdf?raw=true')
 
-#Variables for checkbutton and radio button
-cb = IntVar()
-rbtn = IntVar()
+    
+#splash screen window dimmensions, labels, and text
+def splash_screen():
+
+    splash_root = tk.Tk()
+
+    screen_width = splash_root.winfo_screenwidth()
+    screen_height = splash_root.winfo_screenheight()
+    window_width = int(screen_width * 0.5)
+    window_height = int(screen_height * 0.5)
+
+    splash_root.geometry(f"{window_width}x{window_height}")
+    splash_root.title("ViennaRNA")
+    splash_root.config(bg='#36454f')
+
+    splash_img = 'https://github.com/christopherota/ViennaGUI/blob/main/Linux/RNAimg.png?raw=true'
+    with urllib.request.urlopen(splash_img) as u:
+        raw_data = u.read()
+    im = Image.open(BytesIO(raw_data))
+    img1 = ImageTk.PhotoImage(im)
+    img_label = tk.Label(splash_root, image=img1)
+    img_label.image = img1
+    img_label.pack(side="top", fill="both", expand=True)
+
+
+    splash_label = Label(splash_root, text="Welcome to ViennaRNA", font=30, background='#36454f', fg='white')
+    splash_label.pack(side="top", fill="both", expand=True)
+
+    label = tk.Label(splash_root, text="Loading...", font=("Helvetica", 24), bg='#36454f', fg='white')
+    label.pack(side="top", fill="both", expand=True)
+
+#limits splash screen to 5 seconds and moves to main_window protocol to close and open main window.
+    splash_root.after(4000,main_window)
+    splash_root.after(4100,splash_root.destroy)
+
+
+#function to open main window after destroying splash screen
+#Main GUI window title and dimensions
+#The GUI uses grid as the geometry
+    
+def main_window():
+
+    
+    window = tk.Tk()
+    window.title ("ViennaRNA Package")
+    window.config(bg='#36454f')
+    
+    #Variables for checkbutton and radio button
+    cb = IntVar()
+    rbtn = IntVar()
 
 #Additional details for main GUI window
 #Welcome and enter sequence labels on main GUI window
-prg_title = Label(window, text="Welcome to Vienna RNA Program",
-       font=("Times New Roman", 14)).grid(
+    prg_title = Label(window, text="Welcome to Vienna RNA Program",
+       font=("Times New Roman", 14),bg='#36454f', fg="white").grid(
        row=0, columnspan=15, padx=5, pady=5)
        
-prg_choice1 = Radiobutton(window, text="RNAfold", variable=rbtn,
-       value=1, command=fold_pl_select)
-prg_choice1.grid(row=1, column=3)
+    prg_choice1 = Radiobutton(window, text="RNAfold", variable=rbtn,
+       value=1, command=fold_pl_select, bg='#36454f', fg="white")
+    prg_choice1.grid(row=1, column=3)
        
-prg_choice2 = Radiobutton(window, text="RNAalifold", variable=rbtn,
-       value=2, command=aln_select)
-prg_choice2.grid(row=1, column=4, padx=3, pady=3)
+    prg_choice2 = Radiobutton(window, text="RNAalifold", variable=rbtn,
+       value=2, command=aln_select, bg='#36454f', fg="white")
+    prg_choice2.grid(row=1, column=4, padx=3, pady=3)
 
-prg_choice3 = Radiobutton(window, text="RNAplfold", variable=rbtn,
-       value=3, command=fold_pl_select) 
-prg_choice3.grid(row=1, column=5)
-rbtn.set(1)
+    prg_choice3 = Radiobutton(window, text="RNAplfold", variable=rbtn,
+       value=3, command=fold_pl_select, bg='#36454f', fg="white") 
+    prg_choice3.grid(row=1, column=5)
+    rbtn.set(1)
 
-lbl_seq = Label(window, text="Enter RNA sequence: ",
-       font=("Times New Roman", 12)).grid(
+    lbl_seq = Label(window, text="Enter RNA sequence: ",
+       font=("Times New Roman", 12), bg='#36454f', fg="white").grid(
        row=2, columnspan=15, padx=5, pady=5)
 
 #Text box and go button on main GUI window
-global txt_seq, go_btn, inp_seq, quit_btn
-global cb_file, browse_box, browse_btn, browse_btn2
+    global txt_seq, go_btn, inp_seq, quit_btn
+    global cb_file, browse_box, browse_btn, browse_btn2
 
-txt_seq = Text(window, width=40, height=10)
-txt_seq.grid(row=4, column=1, columnspan=5, padx=5, pady=25)
-inp_seq = txt_seq.get(1.0, "end-1c")
+    txt_seq = Text(window, width=40, height=10)
+    txt_seq.grid(row=4, column=1, columnspan=5, padx=5, pady=25)
+    inp_seq = txt_seq.get(1.0, "end-1c")
 
-go_btn = Button(window, text="Go", command=go_event)
-go_btn.grid(row=4, column=7, padx=5, pady=10)     
+    go_btn = Button(window, text="Go", command=go_event, highlightbackground='#36454f').grid(row=4, column=7, padx=5, pady=10)
 
 
 #Checkbutton and browse on main GUI window
-cb_file = Checkbutton(window, text="To upload file, check box", variable=cb, 
-                      command= isChecked)
-cb_file.grid(row=6, column=1, columnspan=5, sticky=W, padx=5, pady=5)  
-cb.set(0)
+    cb_file = Checkbutton(window, text="To upload file, check box", variable=cb,command= isChecked, bg='#36454f',fg='white')
+    cb_file.grid(row=6, column=1, columnspan=5, sticky=W, padx=5, pady=5)  
+    cb.set(0)
 
-browse_box = Entry(window, width = 40)
-browse_box.grid(row=3, column=1, columnspan=6, padx=5, pady=5)
-remove(browse_box)
-
-browse_btn =  Button(window, text="Browse", command=browse)
-browse_btn.grid(row=3, column=7, sticky=W, padx=5, pady=5)
-remove(browse_btn)
-
-browse_btn2 = Button(window, text="Browse", command=browse_aln)
-browse_btn2.grid(row=3, column=7, sticky=W, padx=5, pady=5)
-remove(browse_btn2)
+    browse_box = Entry(window, width = 40)
+    browse_box.grid(row=3, column=1, columnspan=6, padx=5, pady=5)
+    remove(browse_box)
     
+    browse_btn =  Button(window, text="Browse", command=browse)
+    browse_btn.grid(row=3, column=7, sticky=W, padx=5, pady=5)
+    remove(browse_btn)
+
+    browse_btn2 = Button(window, text="Browse", command=browse_aln)
+    browse_btn2.grid(row=3, column=7, sticky=W, padx=5, pady=5)
+    remove(browse_btn2)
+
+    help_button = tk.Button(window, text="Help", highlightbackground='#36454f', command=open_help)
+    help_button.grid(row=0, column=7, padx=3, pady=3)
     
 #Quit button on main GUI window to delete tmp and close program
-quit_btn = Button(window, text="Quit", command=quit_prg)
-quit_btn.grid(row=6, column=7, padx=5, pady=5)
+    quit_btn = Button(window, text="Quit", command=quit_prg, highlightbackground='#36454f')
+    quit_btn.grid(row=6, column=7, padx=5, pady=5)
+
+
 
 #When closing by clicking X, delete tmp and close program
-window.protocol("WM_DELETE_WINDOW", quit_prg)
+    window.protocol("WM_DELETE_WINDOW", quit_prg)
 
-#The following is needed to keep main GUI window running
-window.mainloop()
+
+splash_screen()
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
+#edits made: line13 PngInfo imported, line 113 program and user_input added and used throughout go_event function, line 221 added a download button, line 225 save_image function created
 #This is a GUI program for the top three commonly used
 #Vienna RNA programs, RNAfold, RNAalifold, and RNAplfold.
-#This program is for Linux only 
-
+#This program is for Linux only
 #Import modules for main GUI program
 import vienna_config_v1
 import os, sys, subprocess, shutil, time
@@ -10,7 +10,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.filedialog import askopenfile
 from PIL import Image, ImageTk
-
+from PIL.PngImagePlugin import PngInfo
 
 #Define functions for the GUI
 
@@ -111,16 +111,23 @@ def aln_select():
 #This function will give output after the go button is pressed, 
 #depending on input from text box or opening file
 def go_event():
+    global program
+    global user_input
+    
     if rbtn.get()==1:
        #if txt_seq is showing do the following
        if txt_seq.winfo_ismapped() == True:
+          print ("sequence length: ",len(txt_seq.get(1.0, "end-1c")))
           with open ("input.txt", "w") as usr_inp:
-            usr_inp.write(txt_seq.get(1.0, "end-1c"))
-          subprocess.run(["RNAfold", "input.txt"])  
+            usr_inp.write(txt_seq.get(1.0, "end-1c").replace('\n',''))
+          os.system("RNAfold < input.txt")
+          print ("Finished one sequence")
           #find the ps file
           find_file()
           #open the ps file on canvas      
           open_file()
+          program = "RNAfold"
+          user_input = "text"
             
        #else do this instead
        else:
@@ -130,6 +137,8 @@ def go_event():
           
           #open the ps file on canvas      
           open_file()
+          program = "RNAfold"
+          user_input = "file"
           
     elif rbtn.get()==2:
        subprocess.run(["RNAalifold", filepath])
@@ -139,6 +148,8 @@ def go_event():
        #print (output)
        #open the ps file on canvas      
        open_file()
+       program = "RNAalifold"
+       user_input = "file"
        
     else:   
        #if txt_seq is showing do the following
@@ -152,6 +163,8 @@ def go_event():
           #print (output)
           #open the ps file on canvas      
           open_file()
+          program = "RNAplfold"
+          user_input = "text"
             
        #else do this instead
        else:
@@ -163,6 +176,8 @@ def go_event():
           #print (output)
           #open the ps file on canvas      
           open_file()    
+          program = "RNAplfold"
+          user_input = "file"
         
 #This function will find all .ps files within tmp folder
 def find_file():
@@ -184,11 +199,12 @@ def open_file():
     #Toplevel window title and dimensions
     ps_window.title("Output")
     
+    #make ps_loc global
+    global ps_loc
     ps_loc = ""
     print(find_ps)
     for y in find_ps:
        ps_loc = os.path.join(os.getcwd(),y)
-       
         
     #Open the ps file    
     img_open = Image.open(ps_loc)
@@ -204,6 +220,21 @@ def open_file():
     #Paste the ps file onto the canvas
     ps_canvas.create_image(0, 0, anchor="nw", image=img)
     ps_canvas.grid()
+    
+    #add a download button so the images can be downloaded
+    download_btn = Button(ps_window, text='Download', width=5, height=1, bd='5',	command=save_image)
+    download_btn.place(x=img_w-75, y=0, anchor="nw")
+    
+#This function will download the output
+def save_image():
+	image = Image.open(ps_loc)
+	metadata = PngInfo()
+	metadata.add_text("program",program)
+	metadata.add_text("user input",user_input)
+	size = width, height = image.size
+	home = os.path.join(os.path.join(os.path.expanduser('~')), 'home')
+	image.save(home + '_viennaRNA_output.png', pnginfo=metadata)
+	del image
 
 #Function to quit the program and check if user is sure they want to quit
 def quit_prg():
@@ -254,7 +285,6 @@ global cb_file, browse_box, browse_btn, browse_btn2
 
 txt_seq = Text(window, width=40, height=10)
 txt_seq.grid(row=4, column=1, columnspan=5, padx=5, pady=25)
-inp_seq = txt_seq.get(1.0, "end-1c")
 
 go_btn = Button(window, text="Go", command=go_event)
 go_btn.grid(row=4, column=7, padx=5, pady=10)     
